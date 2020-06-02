@@ -19,6 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
+Route::get('/attendance', 'AttendanceController@index')->name('attendance.index');
+Route::get('/attendance/manage', 'AttendanceController@manage')->name('attendance.manage');
+Route::post('/attendance/start', 'AttendanceController@start')->name('attendance.start');
+Route::post('/attendance/member/present', 'AttendanceController@present')->name('attendance.present');
+Route::get('/attendance/list/{att_id}', 'AttendanceController@show')->name('attendance.show');
+Route::get('/attendance/end', 'AttendanceController@endAttendance');
+
 Route::get('/members/fellowship', 'FellowshipController@index')->name('fellowship.index');
 
 Route::get('/members', 'MemberController@index')->name('member.index');

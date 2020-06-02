@@ -21,7 +21,7 @@
                         @endif
 @endsection
 
-@section('ss_errors')
+@section('error')
     @if ($message = Session::get('errors'))   
                             
                             <div class="alert alert-success alert-dismissible fade show" role="alert">

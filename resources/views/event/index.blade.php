@@ -15,10 +15,11 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Event ID</th>
-                                                <th>Event Title</th>
-                                                <th>Event Rate</th>
-                                                <th>Event Date</th>
-                                                <th>Event Venue</th>
+                                                <th>Title</th>
+                                                <th>Category</th>
+                                                <th>Rate</th>
+                                                <th>Date</th>
+                                                <th>Venue</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -28,8 +29,8 @@
                                                 <tr>
                                                     <td>{{ $i++ }}</td>
                                                     <td>{{ $event->event_id }}</td>
-
                                                     <td>{{ ucwords($event->title) }}</td>
+                                                    <td>{{ $event->eventcategory }}</td>
                                                     <td>{{ $event->rate }}</td>
                                                     <td>{{ $event->event_date . ' at ' .$event->event_time }}</td>
                                                     <td>{{ ucwords($event->venue) }}</td>

@@ -1,7 +1,50 @@
 @extends('layouts.layout')
-
+@include('layouts.partials.utils')
 @section('content')
 <!-- Dark table start -->
+
+{{-- @include('attendance.partials.partial') --}}
+
+       <div class="col-lg-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    @yield('success')
+                    @yield('errors')
+                    <div class="col-md-8">
+                        
+                        <div class="single-table">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="1">ID: </th>
+                                            <td>{{ $attendanceMeta->att_id }}</td>
+                                            <td colspan="3"></td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="1">Start Time: </th>
+                                            <td colspan="2">{{ $attendanceMeta->start_time }}</td>
+                                            <th colspan="1">End Time: </th>
+                                            <td colspan="2">{{ $attendanceMeta->start_time }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="1">Created By: </th>
+                                            <td colspan="2">{{ 'current user' }}</td>
+                                            <td colspan="3">
+                                                <a href="" class="btn btn-flat btn-sm btn-danger pull-right">Pause</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <div class="col-12 mt-5">
     @if ($message = Session::get('success'))   
         
@@ -12,7 +55,6 @@
             </button>
         </div>
     @endif
-
     <div class="card">
         <div class="card-body">
             <h4 class="header-title">{{ $heading }} </h4>
@@ -23,9 +65,7 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Age</th>
                             <th>Gender</th>
-                            <th>Phone</th>
                             <th>Location</th>
                             <th>Actions</th>
                         </tr>
@@ -34,22 +74,17 @@
                         <?php $i=1;?>
                         @foreach ($members as $member)
                             <tr>
-                                <td>{{ $i++ }}</td>
-                                <td>{{ $member->fullname }} </td>
-                                <td>{{ $member->age }}</td>
-                                <td>{{ ucwords($member->gender) }}</td>
-                                <td>{{ $member->phone }} </td>
-                                <td>{{ ucwords($member->location) }} </td>
+                                <td><?= $i++;?></td>
+                                <td><?= $member->fullname ?></td>
+                                <td><?= ucwords($member->gender)?></td>
+                                <td><?= ucwords($member->location)?></td>
                                 <td>
-                                    <form action="{{ route('member.destroy', $member->id) }}" method="post">
+                                    <form action="{{ route('attendance.present', $attendanceMeta->id) }}" method="post">
                                         @csrf
-                                        <a href="{{ route('member.edit', $member->id) }}" class="btn btn-flat btn-sm btn-primary">edit</a>
-                                        <a href="{{ route('member.show', $member->id) }}" class="btn btn-flat btn-sm btn-info">View</a>
-                                        @method('DELETE')
-                                        <button class="btn btn-flat btn-sm btn-danger" type="submit">Delete</button>
+                                        <button class="btn btn-flat btn-sm btn-success" type="submit">Present <i class="ti-check"></i></button>
                                     </form>
                                 </td>
-                            </tr>                                    
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

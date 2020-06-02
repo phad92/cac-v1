@@ -18,6 +18,12 @@
             </ul>
           </li>
           <li>
+            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Attendance</span></a>
+            <ul class="collapse">
+              <li><a href="{{ route('attendance.manage') }}">Manage Attendance</a></li>
+            </ul>
+          </li>
+          <li>
             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Members
               </span></a>
             <ul class="collapse">
@@ -30,9 +36,7 @@
                       <li><a href="{{ route('member.birthday', array('day' => $day)) }}">{{ ucfirst($day) }}</a></li>
                     @endforeach
                   </ul>
-              </li>
-                                    
-                               
+              </li>           
             </ul>
           </li>
           <li>
