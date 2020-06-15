@@ -9,11 +9,11 @@
 {{-- @include('attendance.partials.partial') --}}
 
    <div class="col-lg-12 mt-5">
-       @yield('success')
-       @yield('errors')
     <div class="card">
         <div class="card-body">
             <div class="row">
+                @yield('success')
+                @yield('errors')
                 <div class="col-md-12">
                     
                     <div class="single-table">
@@ -31,16 +31,16 @@
                                         {{-- <td colspan="2">{{ $attendanceMeta->category }}</td> --}}
                                     </tr>
                                     <tr>
-                                        <th>Date: </th>
-                                        <td>{{ $attendanceMeta->datecreated }}</td>
-                                        <th>Time: </th>
-                                        <td>{{ $attendanceMeta->start_time }} - {{ $attendanceMeta->end_time }}</td>
+                                        <th>Start Time: </th>
+                                        <td>{{ $attendanceMeta->start_time }}</td>
+                                        <th>End Time: </th>
+                                        <td>{{ $attendanceMeta->start_time }}</td>
                                     </tr>
                                     <tr>
                                         <th>Created By: </th>
                                         <td colspan="2">{{ 'current user' }}</td>
                                         <td>
-                                            <a href="{{ route('attendance.end') }}" class="btn btn-flat btn-sm btn-danger pull-right">End Attendance</a>
+                                            <a href="" class="btn btn-flat btn-sm btn-danger pull-right">Pause</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -73,12 +73,25 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Gender</th>
-                            <th>Location</th>
-                            <th>Actions</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
-                        @livewire('attendance.attendance-list', ['meta_id' => $attendanceMeta->id])
+                    <tbody>
+                        @foreach ($collection as $attendant)
+                            <tr>
+                                <td>{{ $loop->index+1 }}</td>
+                                <td>{{ $attendant->attendantname }}</td>
+                                <td>{{ $attendant->present }}</td>
+                                <td>{{ $attendant->created_at }}</td>
+                                <td>
+                                    <a href="{{ route('member.show', $attendant->member_id) }}">Detail</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                        {{-- @livewire('attendance.attendance-list', ['meta_id' => $attendanceMeta->meta_id]) --}}
                 </table>
             </div>
         </div>

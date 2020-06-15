@@ -1,5 +1,8 @@
 @extends('layouts.layout')
 @include('layout.partials.utils')
+
+@section('title', $page_title)
+
 <!-- basic table start -->
 <div class="col-lg-12 mt-5">
     <div class="card">

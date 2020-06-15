@@ -1,5 +1,7 @@
 @extends('layouts.layout')
 
+@section('title', $page_title)
+
 @section('content')
     <div class="col-12">
         <div class="card mt-5">

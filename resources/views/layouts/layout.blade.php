@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> CAC - {{ $page_title ?? '' }}</title>
+    <title> @yield('title') - CAC</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="{{asset('images/icon/favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
@@ -23,10 +23,10 @@
 
      <!-- Datatables -->
   <link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}">
-  <link rel="stylesheet" href="{{asset('css/dataTables.bootstrap4.css')}}">
+  <link rel="stylesheet" href="{{asset('css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/responsive.bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/responsive.jqueryui.min.css')}}">
-
+ @livewireStyles
     <!-- modernizr css -->
     <script src="{{asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
 
@@ -50,7 +50,10 @@
                  <!-- page title area end -->
             <div class="main-content-inner">
                 <div class="row">
-                    @yield('content')
+                    {{-- @yield('content') --}}
+                    @section('content')
+                        
+                    @show
                 </div>
             </div>
         </div>
@@ -63,20 +66,22 @@
         <!-- footer area end-->
     </div>
     @include('layouts.partials.offsetarea')
+
+     @livewireScripts
     <!-- jquery latest version -->
-    <script src="{{asset('js/vendor/jquery-2.2.4.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/vendor/jquery-2.2.4.min.js')}}"></script>
     <!-- bootstrap 4 js -->
-    <script src="{{asset('js/popper.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('js/metisMenu.min.js')}}"></script>
-    <script src="{{asset('js/jquery.slimscroll.min.js')}}"></script>
-    <script src="{{asset('js/jquery.slicknav.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/owl.carousel.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/metisMenu.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.slimscroll.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.slicknav.min.js')}}"></script>
 
          <!-- Datatables -->
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/dataTables.bootstrap4.js')}}"></script>
-    <script src="{{asset('js/responsive.bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/responsive.bootstrap4.min.js')}}"></script>
     <script src="{{asset('js/responsive.jqueryui.min.js')}}"></script>
 
     <!-- start chart js -->
@@ -89,6 +94,7 @@
     zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
     ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
     </script>
+
     <!-- all line chart activation -->
     <script src="{{asset('js/line-chart.js')}}"></script>
     <!-- all pie chart -->
@@ -96,6 +102,9 @@
     <!-- others plugins -->
     <script src="{{asset('js/plugins.js')}}"></script>
     <script src="{{asset('js/scripts.js')}}"></script>
+
+    {{-- custom javascript --}}
+    {{-- <script src="{{ asset('js/custom.js') }}"></script> --}}
 </body>
 
 </html>

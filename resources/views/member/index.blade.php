@@ -1,6 +1,10 @@
 @extends('layouts.layout')
+
+@section('title', $page_title)
+
 @section('content')
 <!-- Dark table start -->
+                    @include('member.partials.action-buttons')
                     <div class="col-12 mt-5">
                         @if ($message = Session::get('success'))   
                             
@@ -43,7 +47,7 @@
                                                         <form action="{{ route('member.destroy', $member->id) }}" method="post">
                                                             @csrf
                                                             <a href="{{ route('member.edit', $member->id) }}" class="btn btn-flat btn-sm btn-primary">edit</a>
-                                                            <a href="{{ route('member.show', $member->id) }}" class="btn btn-flat btn-sm btn-info">View</a>
+                                                            <a href="{{ route('member.show', $member->member_id) }}" class="btn btn-flat btn-sm btn-info">View</a>
                                                             @method('DELETE')
                                                             <button class="btn btn-flat btn-sm btn-danger" type="submit">Delete</button>
                                                         </form>

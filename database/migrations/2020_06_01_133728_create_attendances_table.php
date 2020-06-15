@@ -15,9 +15,11 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->integer('member_id');
-            $table->string('att_id');
-            $table->char('status', 1);
+            $table->unsignedBigInteger('member_id');
+            $table->char('present', 1);
+            $table->unsignedBigInteger('meta_id');
+            $table->foreign('member_id')->references('id')->on('members');
+            $table->foreign('meta_id')->references('id')->on('attendance_metas');
             $table->timestamps();
         });
     }

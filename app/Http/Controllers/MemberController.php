@@ -7,6 +7,18 @@ use App\Member;
 use App\Mail\TestMail;
 use Mail;
 
+// MESSAGE
+
+// code 	-> varchar
+// sender	-> integer
+// receiver -> integer
+// subject	-> varchar
+// message -> text
+// opened -> boolean
+// priority -> boolean
+// created_at -> datetime
+
+
 class MemberController extends Controller
 {
     
@@ -15,7 +27,6 @@ class MemberController extends Controller
     public function index()
     {
         $members = Member::all();
-
         $page_title = $this->page_title;
         $heading = 'List of Members';
         return view('member.index', compact('page_title','heading', 'members'))->with('message', 'welcome');
@@ -23,7 +34,7 @@ class MemberController extends Controller
 
     public function show($id)
     {
-        $member = Member::find($id);
+        $member = Member::where('member_id',$id)->first();
         $page_title = $this->page_title;
         $heading = 'View Member';
         return view('member.show', compact('member','page_title', 'heading'));
@@ -58,7 +69,7 @@ class MemberController extends Controller
         return redirect()->route('member.create')->with('success', 'New Member Created');
     }
 
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
         $member = Member::find($id);
         $heading = "Edit Page";
@@ -98,7 +109,7 @@ class MemberController extends Controller
         }
 
         $model->avatar = $request->input('avatar');
-        $model->user_id = $request->input('user_id', 0);
+        $model->user_id = 1; //$request->input('user_id');
         $model->first_name = $request->input('first_name');
         $model->last_name = $request->input('last_name');
         $model->dob = $request->input('dob');

@@ -2,7 +2,8 @@
 @include('layouts.partials.utils')
 @include('event.cat.create')
 
-
+@section('title', $page_title)
+    
 @section('content')
 @yield('eventcatCreate')
 <!-- Dark table start -->

@@ -15,11 +15,15 @@ class CreateAttendanceMetasTable extends Migration
     {
         Schema::create('attendance_metas', function (Blueprint $table) {
             $table->id();
-            $table->uuid('att_id');
+            $table->uuid('meta_id');
+            $table->string('name')->nullable();
             $table->time('start_time');
             $table->time('end_time')->nullable();
             $table->string('duration')->nullable();
+            $table->unsignedBigInteger('category_id');
             $table->char('active', 1);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

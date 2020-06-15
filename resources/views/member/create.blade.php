@@ -1,9 +1,10 @@
 @extends('layouts.layout')
 
-
+@section('title', $page_title)
 @include('layouts.partials.utils')
 
 @section('content')
+@include('member.partials.action-buttons')
     <div class="col-12">
         <div class="card mt-5">
             <div class="card-body">
@@ -15,7 +16,8 @@
                     <div class="col-md-9">
                         @yield('success')
                         @yield('errors')
-                        <form class="needs-validation" action="{{ route('member.store') }}" method="POST" novalidate="">
+                        @livewire('member.create-index')
+                        {{-- <form class="needs-validation" action="{{ route('member.store') }}" method="POST" novalidate="">
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
@@ -161,7 +163,7 @@
                                 <button class="btn btn-flat btn-primary mr-2" type="submit" name="submit" value="Submit">Submit Form</button>
                                 <button class="btn btn-flat btn-default" type="submit">Cancel</button>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
             </div>

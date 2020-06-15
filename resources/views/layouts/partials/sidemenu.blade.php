@@ -21,6 +21,7 @@
             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Attendance</span></a>
             <ul class="collapse">
               <li><a href="{{ route('attendance.manage') }}">Manage Attendance</a></li>
+              <li><a href="{{ route('attendance.category.manage') }}">Manage Category</a></li>
             </ul>
           </li>
           <li>

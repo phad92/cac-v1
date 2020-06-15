@@ -1984,6 +1984,10 @@ label {
     margin-top: 2px;
 }
 
+.invalid-feedback{
+    display: block;
+}
+
 /*-------------------- END Form ------------------- */
 
 
