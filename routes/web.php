@@ -17,14 +17,31 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
-Route::get('/attendance', 'AttendanceController@index')->name('attendance.index');
-Route::get('/attendance/manage', 'AttendanceController@manage')->name('attendance.manage');
-Route::post('/attendance/start', 'AttendanceController@start')->name('attendance.start');
+Route::get('/attendance/dashboard', function () {
+    return view('attendance.dashboard', ['page_title' => 'attendance']);
+});
+Route::get('/attendance/end', 'AttendanceMetaController@endAttendance')->name('attendance.end');
+Route::get('/attendance/attendants/{meta_id}', 'AttendanceController@attendants')->name('attendance.detail');
+
+Route::get('/attendance', 'AttendanceMetaController@index')->name('attendance.index');
+Route::get('/attendance/manage', 'AttendanceMetaController@manage')->name('attendance.manage');
+Route::get('/attendance/create', 'AttendanceMetaController@create')->name('attendance.create');
+Route::post('/attendance/store', 'AttendanceMetaController@store')->name('attendance.store');
 Route::post('/attendance/member/present', 'AttendanceController@present')->name('attendance.present');
-Route::get('/attendance/list/{att_id}', 'AttendanceController@show')->name('attendance.show');
-Route::get('/attendance/end', 'AttendanceController@endAttendance');
+Route::get('/attendace/category/manage', 'AttendanceMetaController@manageCategory')->name('attendance.category.manage');
+Route::get('/attendance/category/create', 'AttendanceMetaController@createCategoryPage')->name('attendance.category.create');
+Route::post('/attendance/category/store', 'AttendanceMetaController@storeCategory')->name('attendance.category.store');
+Route::get('/attendance/list/{meta_id}', 'AttendanceMetaController@show')->name('attendance.show');
+Route::get('/attendance/category/edit/{id}', 'AttendanceMetaController@editCategoryPage')->name('attendance.category.edit');
+Route::patch('/attendance/category/update/{id}', 'AttendanceMetaController@updateCategory')->name('attendance.category.update');
+Route::delete('/attendance/category/destroyCategory/{id}', 'AttendanceMetaController@destroyCategory')->name('attendance.category.destroy');
+
 
 Route::get('/members/fellowship', 'FellowshipController@index')->name('fellowship.index');
 

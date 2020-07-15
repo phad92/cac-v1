@@ -5,36 +5,15 @@
 @section('title', $page_title)
 
 @section('content')
-<!-- Dark table start -->
-    <div class="col-lg-12 mt-5">
-        <div class="card">
-            @yield('success')
-            @yield('errors')
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="">
-                            <h4>Start an Attendance</h4>
-                        </div>
-                        <span>Click on the button to take an attendance</span>
-                    </div>
-                    <div class="col-md-4">
-                        {{-- <form action="{{ route('attendance.start') }}" method="post"> --}}
-                            <a href="{{ route('attendance.create') }}" class="btn btn-flat btn-primary btn-md mb-3">Create Attendance</a>
-                            
-                            {{-- @csrf
-                                <button type="submit" class="btn btn-flat btn-primary btn-md mb-3 ">Start Attendance</button>
-                            @if (!empty($activeAttd))
-                                <a href="{{ route('attendance.end') }}" class="btn btn-flat btn-danger btn-md mb-3">End Attendance</a>
-                            @endif --}}
-                        {{-- </form> --}}
-                    </div>
-                </div>
-            </div>
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Todays Order List</h4>
+            @livewire('attendance.dashboard-attendance-list')
         </div>
     </div>
-
-<div class="col-12 mt-5">
+</div>
+{{-- <div class="col-12 mt-5">
    
     <div class="card">
         <div class="card-body">
@@ -77,6 +56,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Dark table end -->
 @endsection

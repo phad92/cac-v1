@@ -1,6 +1,8 @@
 @extends('layouts.layout')
 @include('layouts.partials.utils')
 
+@section('title', $page_title)
+
 @section('content')
     <div class="col-12">
         <div class="card mt-5">

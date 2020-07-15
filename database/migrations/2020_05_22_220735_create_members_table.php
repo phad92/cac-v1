@@ -29,7 +29,8 @@ class CreateMembersTable extends Migration
             $table->string('spouse')->nullable();
             $table->integer('no_of_children')->nullable();
             $table->string('avatar')->nullable();
-            $table->integer('user_id')->unsigned();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
